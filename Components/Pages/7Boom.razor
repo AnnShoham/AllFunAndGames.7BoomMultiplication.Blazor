@@ -1,0 +1,53 @@
+﻿@page "/7Boom"
+
+<h3>Let's play 7 Boom!</h3>
+
+<div class="Game">
+    <table border="0">
+
+        @for (int i = 0; i < 10; i++)
+        {
+            <tr border="1">
+                @for (int k = i * 10; k <= (i + 1) * 10; k++)
+                {
+                    if (Is7(k))
+                    {
+                        <td> <img src='/Images/BOMB.jpg' alt="Bomb" height="50" width="50"/> </td>
+                    }
+                    else
+                    {
+                        <td> @k </td>
+                    }
+                }
+            </tr>
+        }
+
+    </table>
+</div>
+
+@code
+{
+    static bool Is7(int number)
+    {
+        while (number > 0)
+        {
+            if (number % 10 == 7)
+                return true;
+            number = number / 10;
+        }
+        return false;
+    }
+}
+
+<style>
+    body{
+        background-image: url('/Images/GamesBackground.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        
+    }
+</style>
+
+<link rel="Bomb" type="image/jpg" href='/Images/BOMB.jpg' />
